@@ -1,0 +1,119 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30330.147
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GlucoControl", "GlucoControl\GlucoControl.csproj", "{02C860E9-B81D-43D6-93EE-64F87EFE0D4A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4000 - Repository", "4000 - Repository", "{E7456C79-25D0-4B8C-A34F-88F92BF3EDA0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0000 - Presentation", "0000 - Presentation", "{3F850BBD-4083-4E02-A73D-DD0BD0F2083A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1000 - Service", "1000 - Service", "{C9B47224-1D36-4258-8197-07AB6CE0C493}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2000 - Application", "2000 - Application", "{C968CD20-D301-4538-9716-A9B6489BC64C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3000 - Domain", "3000 - Domain", "{9630C7D8-69E5-499F-B848-4619FD36F1CD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GlucoControl.Domain", "GlucoControl.Domain\GlucoControl.Domain.csproj", "{58979E85-61A1-488B-BFAF-397C1B4F1D21}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GlucoControl.Domain.Logic", "GlucoControl.Domain.Logic\GlucoControl.Domain.Logic.csproj", "{0ED60100-8A52-4180-A5D6-B8F8C4A81990}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GlucoControl.Domain.Model", "GlucoControl.Domain.Model\GlucoControl.Domain.Model.csproj", "{50B6E243-1136-42E9-975E-D33274B97430}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GlucoControl.Application", "GlucoControl.Application\GlucoControl.Application.csproj", "{8462FE0F-DC03-458F-95F1-E09A2FE9056A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GlucoControl.Application.Logic", "GlucoControl.Application.Logic\GlucoControl.Application.Logic.csproj", "{6EBA5CC6-C1F6-49A3-93AB-C6A9CA223081}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GlucoControl.Repository", "GlucoControl.Repository\GlucoControl.Repository.csproj", "{1696D624-7F70-4DFE-818D-ECBFA5F09237}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GlucoControl.Repository.Logic", "GlucoControl.Repository.Logic\GlucoControl.Repository.Logic.csproj", "{E1614026-F610-4EF3-AFCF-0E2FC7CAA8A1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GlucoControl.Repository.Model", "GlucoControl.Repository.Model\GlucoControl.Repository.Model.csproj", "{8900D744-7093-47F8-A21D-7E1EC243C434}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "9999 - Database", "9999 - Database", "{710B8D46-A819-4BF1-A895-4ECE91E149B9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GlucoControl.Database", "GlucoControl.Database\GlucoControl.Database.csproj", "{0EB97D81-7103-4943-A505-DF1320FE27B9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "8000 - Transversal", "8000 - Transversal", "{9389F380-6F57-41EA-8AA6-D809195C033F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GlucoControl.Transversal", "GlucoControl.Transversal\GlucoControl.Transversal.csproj", "{5851F994-9784-451A-AF19-9F14960C8F04}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GlucoControl.NetCoreApi", "GlucoControl.NetCoreApi\GlucoControl.NetCoreApi.csproj", "{0412D440-B1B2-425C-9BE9-258E4E3D3E9C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{02C860E9-B81D-43D6-93EE-64F87EFE0D4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02C860E9-B81D-43D6-93EE-64F87EFE0D4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02C860E9-B81D-43D6-93EE-64F87EFE0D4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02C860E9-B81D-43D6-93EE-64F87EFE0D4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58979E85-61A1-488B-BFAF-397C1B4F1D21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58979E85-61A1-488B-BFAF-397C1B4F1D21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58979E85-61A1-488B-BFAF-397C1B4F1D21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58979E85-61A1-488B-BFAF-397C1B4F1D21}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0ED60100-8A52-4180-A5D6-B8F8C4A81990}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0ED60100-8A52-4180-A5D6-B8F8C4A81990}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0ED60100-8A52-4180-A5D6-B8F8C4A81990}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0ED60100-8A52-4180-A5D6-B8F8C4A81990}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50B6E243-1136-42E9-975E-D33274B97430}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50B6E243-1136-42E9-975E-D33274B97430}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50B6E243-1136-42E9-975E-D33274B97430}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50B6E243-1136-42E9-975E-D33274B97430}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8462FE0F-DC03-458F-95F1-E09A2FE9056A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8462FE0F-DC03-458F-95F1-E09A2FE9056A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8462FE0F-DC03-458F-95F1-E09A2FE9056A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8462FE0F-DC03-458F-95F1-E09A2FE9056A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EBA5CC6-C1F6-49A3-93AB-C6A9CA223081}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EBA5CC6-C1F6-49A3-93AB-C6A9CA223081}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EBA5CC6-C1F6-49A3-93AB-C6A9CA223081}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EBA5CC6-C1F6-49A3-93AB-C6A9CA223081}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1696D624-7F70-4DFE-818D-ECBFA5F09237}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1696D624-7F70-4DFE-818D-ECBFA5F09237}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1696D624-7F70-4DFE-818D-ECBFA5F09237}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1696D624-7F70-4DFE-818D-ECBFA5F09237}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1614026-F610-4EF3-AFCF-0E2FC7CAA8A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1614026-F610-4EF3-AFCF-0E2FC7CAA8A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1614026-F610-4EF3-AFCF-0E2FC7CAA8A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1614026-F610-4EF3-AFCF-0E2FC7CAA8A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8900D744-7093-47F8-A21D-7E1EC243C434}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8900D744-7093-47F8-A21D-7E1EC243C434}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8900D744-7093-47F8-A21D-7E1EC243C434}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8900D744-7093-47F8-A21D-7E1EC243C434}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0EB97D81-7103-4943-A505-DF1320FE27B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0EB97D81-7103-4943-A505-DF1320FE27B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0EB97D81-7103-4943-A505-DF1320FE27B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0EB97D81-7103-4943-A505-DF1320FE27B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5851F994-9784-451A-AF19-9F14960C8F04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5851F994-9784-451A-AF19-9F14960C8F04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5851F994-9784-451A-AF19-9F14960C8F04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5851F994-9784-451A-AF19-9F14960C8F04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0412D440-B1B2-425C-9BE9-258E4E3D3E9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0412D440-B1B2-425C-9BE9-258E4E3D3E9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0412D440-B1B2-425C-9BE9-258E4E3D3E9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0412D440-B1B2-425C-9BE9-258E4E3D3E9C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{02C860E9-B81D-43D6-93EE-64F87EFE0D4A} = {3F850BBD-4083-4E02-A73D-DD0BD0F2083A}
+		{58979E85-61A1-488B-BFAF-397C1B4F1D21} = {9630C7D8-69E5-499F-B848-4619FD36F1CD}
+		{0ED60100-8A52-4180-A5D6-B8F8C4A81990} = {9630C7D8-69E5-499F-B848-4619FD36F1CD}
+		{50B6E243-1136-42E9-975E-D33274B97430} = {9630C7D8-69E5-499F-B848-4619FD36F1CD}
+		{8462FE0F-DC03-458F-95F1-E09A2FE9056A} = {C968CD20-D301-4538-9716-A9B6489BC64C}
+		{6EBA5CC6-C1F6-49A3-93AB-C6A9CA223081} = {C968CD20-D301-4538-9716-A9B6489BC64C}
+		{1696D624-7F70-4DFE-818D-ECBFA5F09237} = {E7456C79-25D0-4B8C-A34F-88F92BF3EDA0}
+		{E1614026-F610-4EF3-AFCF-0E2FC7CAA8A1} = {E7456C79-25D0-4B8C-A34F-88F92BF3EDA0}
+		{8900D744-7093-47F8-A21D-7E1EC243C434} = {E7456C79-25D0-4B8C-A34F-88F92BF3EDA0}
+		{0EB97D81-7103-4943-A505-DF1320FE27B9} = {710B8D46-A819-4BF1-A895-4ECE91E149B9}
+		{5851F994-9784-451A-AF19-9F14960C8F04} = {9389F380-6F57-41EA-8AA6-D809195C033F}
+		{0412D440-B1B2-425C-9BE9-258E4E3D3E9C} = {C9B47224-1D36-4258-8197-07AB6CE0C493}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AC166F9F-6C73-4495-A7E4-326851EF93BE}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,388 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="GlucoControlModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Control">
+          <Key>
+            <PropertyRef Name="ControlId" />
+          </Key>
+          <Property Name="ControlId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ControlDate" Type="datetime" Nullable="false" />
+          <Property Name="GlucoseLevel" Type="int" Nullable="false" />
+          <Property Name="ProvideInsulin" Type="bit" />
+          <Property Name="InsulinId" Type="uniqueidentifier" />
+          <Property Name="InsulinAmount" Type="int" />
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Insulin">
+          <Key>
+            <PropertyRef Name="InsulinId" />
+          </Key>
+          <Property Name="InsulinId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="InsulinTypeId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Brand" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="GenericName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="StartTime" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Peak" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Duration" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="InsulinType">
+          <Key>
+            <PropertyRef Name="InsulinTypeId" />
+          </Key>
+          <Property Name="InsulinTypeId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Lastname1" Type="varchar" MaxLength="50" />
+          <Property Name="Lastname2" Type="varchar" MaxLength="50" />
+          <Property Name="Age" Type="int" />
+          <Property Name="Height" Type="int" />
+          <Property Name="Weight" Type="decimal" Precision="3" Scale="2" />
+          <Property Name="RoleId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Control_Insulin">
+          <End Role="Insulin" Type="Self.Insulin" Multiplicity="0..1" />
+          <End Role="Control" Type="Self.Control" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Insulin">
+              <PropertyRef Name="InsulinId" />
+            </Principal>
+            <Dependent Role="Control">
+              <PropertyRef Name="InsulinId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Control_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Control" Type="Self.Control" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Control">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Insulin_InsulinType">
+          <End Role="InsulinType" Type="Self.InsulinType" Multiplicity="1" />
+          <End Role="Insulin" Type="Self.Insulin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InsulinType">
+              <PropertyRef Name="InsulinTypeId" />
+            </Principal>
+            <Dependent Role="Insulin">
+              <PropertyRef Name="InsulinTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GlucoControlModelStoreContainer">
+          <EntitySet Name="Control" EntityType="Self.Control" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Insulin" EntityType="Self.Insulin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InsulinType" EntityType="Self.InsulinType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Control_Insulin" Association="Self.FK_Control_Insulin">
+            <End Role="Insulin" EntitySet="Insulin" />
+            <End Role="Control" EntitySet="Control" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Control_User" Association="Self.FK_Control_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Control" EntitySet="Control" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Insulin_InsulinType" Association="Self.FK_Insulin_InsulinType">
+            <End Role="InsulinType" EntitySet="InsulinType" />
+            <End Role="Insulin" EntitySet="Insulin" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GlucoControlModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Control">
+          <Key>
+            <PropertyRef Name="ControlId" />
+          </Key>
+          <Property Name="ControlId" Type="Guid" Nullable="false" />
+          <Property Name="ControlDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="GlucoseLevel" Type="Int32" Nullable="false" />
+          <Property Name="ProvideInsulin" Type="Boolean" />
+          <Property Name="InsulinId" Type="Guid" />
+          <Property Name="InsulinAmount" Type="Int32" />
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="Insulin" Relationship="Self.FK_Control_Insulin" FromRole="Control" ToRole="Insulin" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Control_User" FromRole="Control" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Insulin">
+          <Key>
+            <PropertyRef Name="InsulinId" />
+          </Key>
+          <Property Name="InsulinId" Type="Guid" Nullable="false" />
+          <Property Name="InsulinTypeId" Type="Guid" Nullable="false" />
+          <Property Name="Brand" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GenericName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StartTime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Peak" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Duration" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Control" Relationship="Self.FK_Control_Insulin" FromRole="Insulin" ToRole="Control" />
+          <NavigationProperty Name="InsulinType" Relationship="Self.FK_Insulin_InsulinType" FromRole="Insulin" ToRole="InsulinType" />
+        </EntityType>
+        <EntityType Name="InsulinType">
+          <Key>
+            <PropertyRef Name="InsulinTypeId" />
+          </Key>
+          <Property Name="InsulinTypeId" Type="Guid" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Insulin" Relationship="Self.FK_Insulin_InsulinType" FromRole="InsulinType" ToRole="Insulin" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="Guid" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_User_Role" FromRole="Role" ToRole="User" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Lastname1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Lastname2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Age" Type="Int32" />
+          <Property Name="Height" Type="Int32" />
+          <Property Name="Weight" Type="Decimal" Precision="3" Scale="2" />
+          <Property Name="RoleId" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="Control" Relationship="Self.FK_Control_User" FromRole="User" ToRole="Control" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_User_Role" FromRole="User" ToRole="Role" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_Control_Insulin">
+          <End Role="Insulin" Type="Self.Insulin" Multiplicity="0..1" />
+          <End Role="Control" Type="Self.Control" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Insulin">
+              <PropertyRef Name="InsulinId" />
+            </Principal>
+            <Dependent Role="Control">
+              <PropertyRef Name="InsulinId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Control_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Control" Type="Self.Control" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Control">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Insulin_InsulinType">
+          <End Role="InsulinType" Type="Self.InsulinType" Multiplicity="1" />
+          <End Role="Insulin" Type="Self.Insulin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InsulinType">
+              <PropertyRef Name="InsulinTypeId" />
+            </Principal>
+            <Dependent Role="Insulin">
+              <PropertyRef Name="InsulinTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GlucoControlEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Control" EntityType="Self.Control" />
+          <EntitySet Name="Insulin" EntityType="Self.Insulin" />
+          <EntitySet Name="InsulinType" EntityType="Self.InsulinType" />
+          <EntitySet Name="Role" EntityType="Self.Role" />
+          <EntitySet Name="User" EntityType="Self.User" />
+          <AssociationSet Name="FK_Control_Insulin" Association="Self.FK_Control_Insulin">
+            <End Role="Insulin" EntitySet="Insulin" />
+            <End Role="Control" EntitySet="Control" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Control_User" Association="Self.FK_Control_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Control" EntitySet="Control" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Insulin_InsulinType" Association="Self.FK_Insulin_InsulinType">
+            <End Role="InsulinType" EntitySet="InsulinType" />
+            <End Role="Insulin" EntitySet="Insulin" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <EntitySet Name="sysdiagrams" EntityType="GlucoControlModel.sysdiagrams" />
+        </EntityContainer>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GlucoControlModelStoreContainer" CdmEntityContainer="GlucoControlEntities">
+          <EntitySetMapping Name="Control">
+            <EntityTypeMapping TypeName="GlucoControlModel.Control">
+              <MappingFragment StoreEntitySet="Control">
+                <ScalarProperty Name="ControlId" ColumnName="ControlId" />
+                <ScalarProperty Name="ControlDate" ColumnName="ControlDate" />
+                <ScalarProperty Name="GlucoseLevel" ColumnName="GlucoseLevel" />
+                <ScalarProperty Name="ProvideInsulin" ColumnName="ProvideInsulin" />
+                <ScalarProperty Name="InsulinId" ColumnName="InsulinId" />
+                <ScalarProperty Name="InsulinAmount" ColumnName="InsulinAmount" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Insulin">
+            <EntityTypeMapping TypeName="GlucoControlModel.Insulin">
+              <MappingFragment StoreEntitySet="Insulin">
+                <ScalarProperty Name="InsulinId" ColumnName="InsulinId" />
+                <ScalarProperty Name="InsulinTypeId" ColumnName="InsulinTypeId" />
+                <ScalarProperty Name="Brand" ColumnName="Brand" />
+                <ScalarProperty Name="GenericName" ColumnName="GenericName" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="Peak" ColumnName="Peak" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InsulinType">
+            <EntityTypeMapping TypeName="GlucoControlModel.InsulinType">
+              <MappingFragment StoreEntitySet="InsulinType">
+                <ScalarProperty Name="InsulinTypeId" ColumnName="InsulinTypeId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="GlucoControlModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="GlucoControlModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Lastname1" ColumnName="Lastname1" />
+                <ScalarProperty Name="Lastname2" ColumnName="Lastname2" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Height" ColumnName="Height" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="GlucoControlModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
