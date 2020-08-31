@@ -8,26 +8,26 @@ namespace GlucoControl.Domain.Logic.Services.Base
         where TDomainEntity : class
         where TRepositoryEntity : class
     {
-        public readonly IMapper Mapper;
+        public readonly IMapper _mapper;
 
         public BaseServiceLogic(IMapper mapper)
         {
-            Mapper = mapper;
+            _mapper = mapper;
         }
 
         protected TRepositoryEntity GetRepositoryEntityFromDomainEntity(TDomainEntity domainEntity)
         {
-            return Mapper.Map<TRepositoryEntity>(domainEntity);
+            return _mapper.Map<TRepositoryEntity>(domainEntity);
         }
 
         protected t1 GetRepositoryEntityFromDomainEntity<t1, t2>(t2 domainEntity)
         {
-            return Mapper.Map<t1>(domainEntity);
+            return _mapper.Map<t1>(domainEntity);
         }
 
         protected TDomainEntity GetDomainEntityFromRepositoryEntity(TRepositoryEntity repositoryEntity)
         {
-            return Mapper.Map<TDomainEntity>(repositoryEntity);
+            return _mapper.Map<TDomainEntity>(repositoryEntity);
         }
 
         protected IEnumerable<TDomainEntity> GetDomainEntitiesFromRepositoryEntities(IEnumerable<TRepositoryEntity> repositoryEntities)

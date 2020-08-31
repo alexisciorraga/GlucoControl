@@ -1,20 +1,18 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
 using AutoMapper;
 using GlucoControl.Application.Logic.Services;
 using GlucoControl.Application.Services;
 using GlucoControl.Domain.Logic.Services;
 using GlucoControl.Domain.Services;
-using GlucoControl.Repository;
 using Microsoft.Extensions.Hosting;
 using GlucoControl.Repository.Interfaces;
 using GlucoControl.Repository.Repositories;
 using GlucoControl.Repository.Context;
 using Microsoft.EntityFrameworkCore;
+using GlucoControl.Domain.Logic.Configuration;
 
 namespace GlucoControl.NetCoreApi
 {
@@ -32,9 +30,7 @@ namespace GlucoControl.NetCoreApi
         {
             services.AddControllers();
 
-
             services.AddDbContext<GlucoControlDbContext>(opts => opts.UseSqlServer(Configuration["ConnectionString:GlucoControlDb"]));
-
 
             services.AddScoped<IControlApplication, ControlApplication>();
             services.AddScoped<IControlLogic, ControlLogic>();
@@ -56,12 +52,16 @@ namespace GlucoControl.NetCoreApi
             services.AddScoped<IUserLogic, UserLogic>();
             services.AddScoped<IUserRepository, UserRepository>();
 
-            services.AddAutoMapper(typeof(Startup));
+            var mapperConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new AutomapperApiProfile());
+                mc.AddProfile(new AutomapperDomainProfile());
+            });
 
-            services.AddMvc()
-                .AddControllersAsServices();
+            IMapper mapper = mapperConfig.CreateMapper();
+            services.AddSingleton(mapper);
 
-            
+            services.AddMvc().AddControllersAsServices();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

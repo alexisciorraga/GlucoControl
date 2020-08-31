@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using AutoMapper;
 using GlucoControl.Application.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -21,7 +22,31 @@ namespace GlucoControl.NetCoreApi.Controllers
         [HttpGet]
         public IEnumerable<Models.Control> Get()
         {
-            return _mapper.Map<IEnumerable<Domain.Model.Data.Control.Control>, IEnumerable<Models.Control>>(_controlApplication.GetAll());
+            var domainControl = _controlApplication.GetAll();
+            var apiControl = _mapper.Map<IEnumerable<Domain.Model.Data.Control.Control>, IEnumerable<Models.Control>>(domainControl);
+            return apiControl;
+        }
+
+        [HttpPost]
+        public void AddControl(Models.Control controlToAdd)
+        {
+            try
+            {
+                var controlDomain = new Domain.Model.Data.Control.Control
+                {
+                    ControlDate = controlToAdd.ControlDate,
+                    GlucoseLevel = controlToAdd.GlucoseLevel,
+                    InsulinAmount = controlToAdd.InsulinAmount,
+                    ProvideInsulin = controlToAdd.ProvideInsulin,
+                    UserId = controlToAdd.UserId
+                };
+
+                _controlApplication.Add(controlDomain);
+            }
+            catch (Exception exception)
+            {
+                throw exception;
+            }
         }
     }
 }

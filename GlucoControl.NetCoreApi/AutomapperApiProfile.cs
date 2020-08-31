@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace GlucoControl.NetCoreApi
 {
-    public class AutoMapperProfile : Profile
+    public class AutomapperApiProfile : Profile
     {
-        public AutoMapperProfile()
+        public AutomapperApiProfile()
         {
             CreateMap<Domain.Model.Data.Control.Control, Models.Control>();
             CreateMap<Models.Control, Domain.Model.Data.Control.Control>();

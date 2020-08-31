@@ -5,24 +5,24 @@ using GlucoControl.Domain.Services;
 using GlucoControl.Repository.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Runtime.InteropServices.WindowsRuntime;
 
 namespace GlucoControl.Domain.Logic.Services
 {
     public class ControlLogic : BaseServiceLogic<Control, Repository.Models.Control>, IControlLogic
     {
         IControlRepository _controlRepository;
-
+        IMapper _mapper;
         public ControlLogic(IMapper mapper, IControlRepository controlRepository) : base(mapper)
         {
             _controlRepository = controlRepository;
+            _mapper = mapper;
         }
 
         public Control Add(Control entity)
         {
-            var repositoryEntity = GetRepositoryEntityFromDomainEntity(entity);
-            var domainEntity = _controlRepository.Insert(repositoryEntity);
-            return GetDomainEntityFromRepositoryEntity(domainEntity);
+            var controlRepository = _controlRepository.Insert(GetRepositoryEntityFromDomainEntity(entity));
+
+            return GetDomainEntityFromRepositoryEntity(controlRepository);
         }
 
         public void Delete(Guid entityId)
