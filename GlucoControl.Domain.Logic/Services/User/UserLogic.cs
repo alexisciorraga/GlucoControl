@@ -1,15 +1,16 @@
 ﻿using AutoMapper;
+using GlucoControl.Domain.Logic.Services.Base;
 using GlucoControl.Domain.Model.Data.User;
 using GlucoControl.Domain.Services;
-using GlucoControl.Repository.Repositories.User;
+using GlucoControl.Repository.Interfaces;
 using System;
 using System.Collections.Generic;
 
 namespace GlucoControl.Domain.Logic.Services
 {
-    public class UserLogic : BaseServiceLogic<User, Repository.Model.User>, IUserLogic
+    public class UserLogic : BaseServiceLogic<User, Repository.Models.User>, IUserLogic
     {
-        private IUserRepository _userRepository;
+        IUserRepository _userRepository;
 
         public UserLogic(IMapper mapper, IUserRepository userRepository) : base(mapper)
         {
@@ -18,12 +19,13 @@ namespace GlucoControl.Domain.Logic.Services
 
         public IEnumerable<User> GetAll()
         {
-            throw new NotImplementedException();
+            return GetDomainEntitiesFromRepositoryEntities(_userRepository.GetAll());
         }
 
         public User GetById(Guid entityId)
         {
-            throw new NotImplementedException();
+            var repositoryEntity = _userRepository.GetById(entityId);
+            return GetDomainEntityFromRepositoryEntity(repositoryEntity);
         }
     }
 }

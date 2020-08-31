@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
-using Unity.Microsoft.DependencyInjection;
 
 namespace GlucoControl.NetCoreApi
 {
@@ -13,7 +12,6 @@ namespace GlucoControl.NetCoreApi
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-                .UseUnityServiceProvider()
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();

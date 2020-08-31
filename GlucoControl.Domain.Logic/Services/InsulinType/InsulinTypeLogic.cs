@@ -1,13 +1,14 @@
 ﻿using AutoMapper;
+using GlucoControl.Domain.Logic.Services.Base;
 using GlucoControl.Domain.Model.Data.InsulinType;
 using GlucoControl.Domain.Services;
-using GlucoControl.Repository.Repositories.InsulinType;
+using GlucoControl.Repository.Interfaces;
 using System;
 using System.Collections.Generic;
 
 namespace GlucoControl.Domain.Logic.Services
 {
-    public class InsulinTypeLogic : BaseServiceLogic<InsulinType, Repository.Model.InsulinType>, IInsulinTypeLogic
+    public class InsulinTypeLogic : BaseServiceLogic<InsulinType, Repository.Models.InsulinType>, IInsulinTypeLogic
     {
         IInsulinTypeRepository _insulinTypeRepository;
 
@@ -18,12 +19,13 @@ namespace GlucoControl.Domain.Logic.Services
 
         public IEnumerable<InsulinType> GetAll()
         {
-            throw new NotImplementedException();
+            return GetDomainEntitiesFromRepositoryEntities(_insulinTypeRepository.GetAll());
         }
 
         public InsulinType GetById(Guid entityId)
         {
-            throw new NotImplementedException();
+            var repositoryEntity = _insulinTypeRepository.GetById(entityId);
+            return GetDomainEntityFromRepositoryEntity(repositoryEntity);
         }
     }
 }

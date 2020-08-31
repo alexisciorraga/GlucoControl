@@ -1,22 +1,26 @@
-﻿using AutoMapper;
+﻿using System.Collections.Generic;
 using GlucoControl.Domain.Services.Base;
-using GlucoControl.Repository.Repositories.Base;
+using AutoMapper;
+using GlucoControl.Repository.Interfaces;
 
 namespace GlucoControl.Domain.Logic.Services.Base
 {
-    public class BaseServiceCrudLogic<TDomainEntity, TRepositoryEntity> :
+    public class BaseServiceCrudLogic<TDomainEntity, TRepositoryEntity>:
         BaseServiceLogic<TDomainEntity, TRepositoryEntity>
         , IBaseServiceCrudLogic<TDomainEntity, int>
         where TDomainEntity : class
         where TRepositoryEntity : class
     {
-        private readonly IBaseRepositoryCrud<TRepositoryEntity, int> _baseRepositoryCrud;
+        readonly IGenericCrudRepository<TRepositoryEntity> _genericCrudRepository;
+        readonly IGenericRepository<TRepositoryEntity> _genericRepository;
 
-        public BaseServiceCrudLogic(IMapper mapper
-            , IBaseRepositoryCrud<TRepositoryEntity, int> baseRepositoryCrud)
+        public BaseServiceCrudLogic(IMapper mapper,
+            IGenericRepository<TRepositoryEntity> genericRepository,
+            IGenericCrudRepository<TRepositoryEntity> genericCrudRepository)
             : base(mapper)
         {
-            _baseRepositoryCrud = baseRepositoryCrud;
+            _genericRepository = genericRepository;
+            _genericCrudRepository = genericCrudRepository;
         }
 
         public TDomainEntity Add(TDomainEntity entity)
@@ -25,19 +29,19 @@ namespace GlucoControl.Domain.Logic.Services.Base
 
             SpecificEntityAddOperations(entityRepository, entity);
 
-            _baseRepositoryCrud.Add(entityRepository);
+            _genericCrudRepository.Insert(entityRepository);
             return GetDomainEntityFromRepositoryEntity(entityRepository);
         }
 
         public void Delete(int entityId)
         {
-            _baseRepositoryCrud.Delete(_baseRepositoryCrud.GetById(entityId));
+            _genericCrudRepository.Delete(_genericRepository.GetById(entityId));
         }
 
         public void Update(TDomainEntity entity)
         {
             var entityRepository = GetValidRepositoryEntityFormDomainEntity(entity);
-            _baseRepositoryCrud.Update(entityRepository);
+            _genericCrudRepository.Update(entityRepository);
             entity = GetDomainEntityFromRepositoryEntity(entityRepository);
         }
 
@@ -48,6 +52,17 @@ namespace GlucoControl.Domain.Logic.Services.Base
 
         protected virtual void SpecificEntityAddOperations(TRepositoryEntity repositoryEntity, TDomainEntity domainEntity)
         {
+
+        }
+
+        public IEnumerable<TDomainEntity> GetAll()
+        {
+            return GetDomainEntitiesFromRepositoryEntities(_genericRepository.GetAll());
+        }
+
+        public TDomainEntity GetById(int entityId)
+        {
+            return GetDomainEntityFromRepositoryEntity(_genericRepository.GetById(entityId));
         }
     }
 }

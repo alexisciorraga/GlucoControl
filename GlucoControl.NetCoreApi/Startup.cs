@@ -1,11 +1,20 @@
-using System;
-using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using AutoMapper;
+using GlucoControl.Application.Logic.Services;
+using GlucoControl.Application.Services;
+using GlucoControl.Domain.Logic.Services;
+using GlucoControl.Domain.Services;
+using GlucoControl.Repository;
 using Microsoft.Extensions.Hosting;
-using Unity;
+using GlucoControl.Repository.Interfaces;
+using GlucoControl.Repository.Repositories;
+using GlucoControl.Repository.Context;
+using Microsoft.EntityFrameworkCore;
 
 namespace GlucoControl.NetCoreApi
 {
@@ -22,9 +31,43 @@ namespace GlucoControl.NetCoreApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+
+            services.AddDbContext<GlucoControlDbContext>(opts => opts.UseSqlServer(Configuration["ConnectionString:GlucoControlDb"]));
+
+
+            services.AddScoped<IControlApplication, ControlApplication>();
+            services.AddScoped<IControlLogic, ControlLogic>();
+            services.AddScoped<IControlRepository, ControlRepository>();
+
+            services.AddScoped<IInsulinApplication, InsulinApplication>();
+            services.AddScoped<IInsulinLogic, InsulinLogic>();
+            services.AddScoped<IInsulinRepository, InsulinRepository>();
+
+            services.AddScoped<IInsulinTypeApplication, InsulinTypeApplication>();
+            services.AddScoped<IInsulinTypeLogic, InsulinTypeLogic>();
+            services.AddScoped<IInsulinTypeRepository, InsulinTypeRepository>();
+
+            services.AddScoped<IRoleApplication, RoleApplication>();
+            services.AddScoped<IRoleLogic, RoleLogic>();
+            services.AddScoped<IRoleRepository, RoleRepository>();
+
+            services.AddScoped<IUserApplication, UserApplication>();
+            services.AddScoped<IUserLogic, UserLogic>();
+            services.AddScoped<IUserRepository, UserRepository>();
+
+            //services.AddScoped<IGenericRepository, GenericRepository>();
+            //services.AddScoped<IUserRepository, UserRepository>();
+
+
+
+
+            services.AddAutoMapper(typeof(Startup));
+
             services.AddMvc()
                 .AddControllersAsServices();
+
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,12 +88,6 @@ namespace GlucoControl.NetCoreApi
             {
                 endpoints.MapControllers();
             });
-        }
-
-        public void ConfigureContainer(IUnityContainer container)
-        {
-            // Could be used to register more types
-            //container.RegisterType<IMyService, MyService>();
         }
     }
 }

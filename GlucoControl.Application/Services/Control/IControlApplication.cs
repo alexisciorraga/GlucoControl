@@ -4,7 +4,7 @@ using System;
 
 namespace GlucoControl.Application.Services
 {
-    public interface IControlApplication : IBaseApplicationCrud<Control, Guid>
+    public interface IControlApplication : IBaseApplicationCrud<Control, Guid>, IBaseReadApplication<Control, Guid>
     {
     }
 }

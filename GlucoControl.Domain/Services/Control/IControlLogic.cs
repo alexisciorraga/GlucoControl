@@ -4,7 +4,7 @@ using System;
 
 namespace GlucoControl.Domain.Services
 {
-    public interface IControlLogic : IBaseServiceCrudLogic<Control, Guid>
+    public interface IControlLogic : IBaseServiceReadLogic<Control, Guid>, IBaseServiceCrudLogic<Control, Guid>
     {
     }
 }

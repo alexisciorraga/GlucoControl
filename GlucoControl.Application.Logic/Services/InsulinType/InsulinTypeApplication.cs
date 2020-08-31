@@ -17,12 +17,12 @@ namespace GlucoControl.Application.Logic.Services
 
         public IEnumerable<InsulinType> GetAll()
         {
-            throw new NotImplementedException();
+            return _insulinTypeLogic.GetAll();
         }
 
         public InsulinType GetById(Guid entityId)
         {
-            throw new NotImplementedException();
+            return _insulinTypeLogic.GetById(entityId);
         }
     }
 }

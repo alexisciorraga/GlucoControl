@@ -1,13 +1,14 @@
 ﻿using AutoMapper;
+using GlucoControl.Domain.Logic.Services.Base;
 using GlucoControl.Domain.Model.Data.Role;
 using GlucoControl.Domain.Services;
-using GlucoControl.Repository.Repositories.Role;
+using GlucoControl.Repository.Interfaces;
 using System;
 using System.Collections.Generic;
 
 namespace GlucoControl.Domain.Logic.Services
 {
-    public class RoleLogic : BaseServiceLogic<Role, Repository.Model.Role>, IRoleLogic
+    public class RoleLogic : BaseServiceLogic<Role, Repository.Models.Role>, IRoleLogic
     {
         IRoleRepository _roleRepository;
 
@@ -18,12 +19,13 @@ namespace GlucoControl.Domain.Logic.Services
 
         public IEnumerable<Role> GetAll()
         {
-            throw new NotImplementedException();
+            return GetDomainEntitiesFromRepositoryEntities(_roleRepository.GetAll());
         }
 
         public Role GetById(Guid entityId)
         {
-            throw new NotImplementedException();
+            var repositoryEntity = _roleRepository.GetById(entityId);
+            return GetDomainEntityFromRepositoryEntity(repositoryEntity);
         }
     }
 }

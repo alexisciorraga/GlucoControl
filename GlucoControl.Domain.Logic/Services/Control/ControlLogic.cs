@@ -1,12 +1,14 @@
 ﻿using AutoMapper;
+using GlucoControl.Domain.Logic.Services.Base;
 using GlucoControl.Domain.Model.Data.Control;
 using GlucoControl.Domain.Services;
-using GlucoControl.Repository.Repositories.Control;
+using GlucoControl.Repository.Interfaces;
 using System;
+using System.Collections.Generic;
 
 namespace GlucoControl.Domain.Logic.Services
 {
-    public class ControlLogic : BaseServiceLogic<Control, Repository.Model.Control>, IControlLogic
+    public class ControlLogic : BaseServiceLogic<Control, Repository.Models.Control>, IControlLogic
     {
         private IControlRepository _controlRepository;
 
@@ -17,7 +19,9 @@ namespace GlucoControl.Domain.Logic.Services
 
         public Control Add(Control entity)
         {
-            return GetDomainEntityFromRepositoryEntity(_controlRepository.Add(GetRepositoryEntityFromDomainEntity(entity)));
+            var repositoryEntity = GetRepositoryEntityFromDomainEntity(entity);
+            var domainEntity = _controlRepository.Insert(repositoryEntity);
+            return GetDomainEntityFromRepositoryEntity(domainEntity);
         }
 
         public void Delete(Guid entityId)
@@ -26,9 +30,22 @@ namespace GlucoControl.Domain.Logic.Services
             _controlRepository.Delete(controlToDelete);
         }
 
+        public IEnumerable<Control> GetAll()
+        {
+            var repositoryEntities = _controlRepository.GetAll();
+            return GetDomainEntitiesFromRepositoryEntities(repositoryEntities);
+        }
+
+        public Control GetById(Guid entityId)
+        {
+            var repositoryEntity = _controlRepository.GetById(entityId);
+            return GetDomainEntityFromRepositoryEntity(repositoryEntity);
+        }
+
         public void Update(Control entity)
         {
-            _controlRepository.Update(GetRepositoryEntityFromDomainEntity(entity));
+            var repositoryEntity = GetRepositoryEntityFromDomainEntity(entity);
+            _controlRepository.Update(repositoryEntity);
         }
     }
 }

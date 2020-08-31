@@ -1,8 +1,8 @@
-﻿using AutoMapper;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using AutoMapper;
 
-namespace GlucoControl.Domain.Logic.Services
+namespace GlucoControl.Domain.Logic.Services.Base
 {
     public class BaseServiceLogic<TDomainEntity, TRepositoryEntity>
         where TDomainEntity : class

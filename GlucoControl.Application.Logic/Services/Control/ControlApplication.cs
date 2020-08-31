@@ -8,7 +8,7 @@ namespace GlucoControl.Application.Logic.Services
 {
     public class ControlApplication : IControlApplication
     {
-        private readonly IControlLogic _controlLogic;
+        readonly IControlLogic _controlLogic;
 
         public ControlApplication(IControlLogic controlLogic)
         {
@@ -17,27 +17,27 @@ namespace GlucoControl.Application.Logic.Services
 
         public Control Add(Control entity)
         {
-            throw new NotImplementedException();
+            return _controlLogic.Add(entity);
         }
 
         public void Delete(Guid entityId)
         {
-            throw new NotImplementedException();
+            _controlLogic.Delete(entityId);
         }
 
         public IEnumerable<Control> GetAll()
         {
-            throw new NotImplementedException();
+            return _controlLogic.GetAll();
         }
 
         public Control GetById(Guid entityId)
         {
-            throw new NotImplementedException();
+            return _controlLogic.GetById(entityId);
         }
 
         public void Update(Control entity)
         {
-            throw new NotImplementedException();
+            _controlLogic.Update(entity);
         }
     }
 }

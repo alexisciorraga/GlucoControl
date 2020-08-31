@@ -1,23 +1,22 @@
 ﻿using AutoMapper;
+using GlucoControl.Application.Services;
 using GlucoControl.Controllers.Base;
 using System.Web.Mvc;
-using Unity;
 
 namespace GlucoControl.Controllers
 {
     public class HomeController : BaseController
     {
-        private readonly IFormatoApplication _formatoApplication;
+        private readonly IControlApplication _controlApplication;
 
-        [InjectionConstructor]
-        public HomeController(IMapper mapper, IFormatoApplication formatoApplication) : base(mapper)
+        public HomeController(IMapper mapper, IControlApplication controlApplication) : base(mapper)
         {
-            _formatoApplication = formatoApplication;
+            _controlApplication = controlApplication;
         }
 
         public ActionResult Index()
         {
-            var formatos = _formatoApplication.GetAllFormatos();
+            var controls = _controlApplication.GetAll();
 
             return View();
         }

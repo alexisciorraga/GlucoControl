@@ -1,6 +1,6 @@
 ﻿namespace GlucoControl.Application.Services.Base
 {
-    public interface IBaseApplicationCrud<TEntity, TEntityKey> : IBaseReadApplication<TEntity, TEntityKey>
+    public interface IBaseApplicationCrud<TEntity, TEntityKey>
     {
         TEntity Add(TEntity entity);
 
