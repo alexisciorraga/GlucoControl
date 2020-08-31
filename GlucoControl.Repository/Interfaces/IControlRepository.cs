@@ -2,7 +2,7 @@
 
 namespace GlucoControl.Repository.Interfaces
 {
-    public interface IControlRepository : IGenericRepository<Control>, IGenericCrudRepository<Control>
+    public interface IControlRepository : IGenericRepository<Control>
     {
     }
 }

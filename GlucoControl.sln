@@ -35,7 +35,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GlucoControl.Transversal", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GlucoControl.NetCoreApi", "GlucoControl.NetCoreApi\GlucoControl.NetCoreApi.csproj", "{0412D440-B1B2-425C-9BE9-258E4E3D3E9C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GlucoControl.Repository", "GlucoControl.Repository\GlucoControl.Repository.csproj", "{335A79AA-6969-4946-BB4C-8A242D650667}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GlucoControl.Repository", "GlucoControl.Repository\GlucoControl.Repository.csproj", "{13F5559B-57A5-4438-B2F2-EC3568091217}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -79,10 +79,10 @@ Global
 		{0412D440-B1B2-425C-9BE9-258E4E3D3E9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0412D440-B1B2-425C-9BE9-258E4E3D3E9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0412D440-B1B2-425C-9BE9-258E4E3D3E9C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{335A79AA-6969-4946-BB4C-8A242D650667}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{335A79AA-6969-4946-BB4C-8A242D650667}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{335A79AA-6969-4946-BB4C-8A242D650667}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{335A79AA-6969-4946-BB4C-8A242D650667}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13F5559B-57A5-4438-B2F2-EC3568091217}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13F5559B-57A5-4438-B2F2-EC3568091217}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13F5559B-57A5-4438-B2F2-EC3568091217}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13F5559B-57A5-4438-B2F2-EC3568091217}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -97,7 +97,7 @@ Global
 		{0EB97D81-7103-4943-A505-DF1320FE27B9} = {710B8D46-A819-4BF1-A895-4ECE91E149B9}
 		{5851F994-9784-451A-AF19-9F14960C8F04} = {9389F380-6F57-41EA-8AA6-D809195C033F}
 		{0412D440-B1B2-425C-9BE9-258E4E3D3E9C} = {C9B47224-1D36-4258-8197-07AB6CE0C493}
-		{335A79AA-6969-4946-BB4C-8A242D650667} = {E7456C79-25D0-4B8C-A34F-88F92BF3EDA0}
+		{13F5559B-57A5-4438-B2F2-EC3568091217} = {E7456C79-25D0-4B8C-A34F-88F92BF3EDA0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AC166F9F-6C73-4495-A7E4-326851EF93BE}

@@ -16,7 +16,7 @@ namespace GlucoControl.Controllers
 
         public ActionResult Index()
         {
-            var controls = _controlApplication.GetAll();
+            // var controls = _controlApplication.GetAll();
 
             return View();
         }

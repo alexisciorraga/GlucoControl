@@ -5,24 +5,12 @@ using System.Collections.Generic;
 
 namespace GlucoControl.Repository.Repositories
 {
-    public class ControlRepository : GenericCrudRepository<Control>, IControlRepository
+    public class ControlRepository : GenericRepository<Control>, IControlRepository
     {
         readonly GlucoControlDbContext _dbContext;
-        readonly IControlRepository _controlRepository;
-        public ControlRepository(GlucoControlDbContext dbContext, IControlRepository controlRepository) : base(dbContext)
+        public ControlRepository(GlucoControlDbContext dbContext) : base(dbContext)
         {
             _dbContext = dbContext;
-            _controlRepository = controlRepository;
-        }
-
-        public IEnumerable<Control> GetAll()
-        {
-            return _controlRepository.GetAll();
-        }
-
-        public Control GetById(object id)
-        {
-            return _controlRepository.GetById(id);
         }
     }
 }

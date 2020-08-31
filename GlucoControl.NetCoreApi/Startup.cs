@@ -56,12 +56,6 @@ namespace GlucoControl.NetCoreApi
             services.AddScoped<IUserLogic, UserLogic>();
             services.AddScoped<IUserRepository, UserRepository>();
 
-            //services.AddScoped<IGenericRepository, GenericRepository>();
-            //services.AddScoped<IUserRepository, UserRepository>();
-
-
-
-
             services.AddAutoMapper(typeof(Startup));
 
             services.AddMvc()

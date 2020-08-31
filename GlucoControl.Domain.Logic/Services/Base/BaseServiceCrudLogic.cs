@@ -11,16 +11,13 @@ namespace GlucoControl.Domain.Logic.Services.Base
         where TDomainEntity : class
         where TRepositoryEntity : class
     {
-        readonly IGenericCrudRepository<TRepositoryEntity> _genericCrudRepository;
         readonly IGenericRepository<TRepositoryEntity> _genericRepository;
 
         public BaseServiceCrudLogic(IMapper mapper,
-            IGenericRepository<TRepositoryEntity> genericRepository,
-            IGenericCrudRepository<TRepositoryEntity> genericCrudRepository)
+            IGenericRepository<TRepositoryEntity> genericRepository)
             : base(mapper)
         {
             _genericRepository = genericRepository;
-            _genericCrudRepository = genericCrudRepository;
         }
 
         public TDomainEntity Add(TDomainEntity entity)
@@ -29,19 +26,19 @@ namespace GlucoControl.Domain.Logic.Services.Base
 
             SpecificEntityAddOperations(entityRepository, entity);
 
-            _genericCrudRepository.Insert(entityRepository);
+            _genericRepository.Insert(entityRepository);
             return GetDomainEntityFromRepositoryEntity(entityRepository);
         }
 
         public void Delete(int entityId)
         {
-            _genericCrudRepository.Delete(_genericRepository.GetById(entityId));
+            _genericRepository.Delete(_genericRepository.GetById(entityId));
         }
 
         public void Update(TDomainEntity entity)
         {
             var entityRepository = GetValidRepositoryEntityFormDomainEntity(entity);
-            _genericCrudRepository.Update(entityRepository);
+            _genericRepository.Update(entityRepository);
             entity = GetDomainEntityFromRepositoryEntity(entityRepository);
         }
 

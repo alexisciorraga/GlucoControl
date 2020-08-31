@@ -5,12 +5,13 @@ using GlucoControl.Domain.Services;
 using GlucoControl.Repository.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 
 namespace GlucoControl.Domain.Logic.Services
 {
     public class ControlLogic : BaseServiceLogic<Control, Repository.Models.Control>, IControlLogic
     {
-        private IControlRepository _controlRepository;
+        IControlRepository _controlRepository;
 
         public ControlLogic(IMapper mapper, IControlRepository controlRepository) : base(mapper)
         {
