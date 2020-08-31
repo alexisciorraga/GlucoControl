@@ -6,7 +6,7 @@ namespace GlucoControl.Repository.Context
 {
     public class GlucoControlDbContext : DbContext
     {
-        public DbSet<User> Controls { get; set; }
+        public DbSet<Control> Controls { get; set; }
         public DbSet<Insulin> Insulins { get; set; }
         public DbSet<InsulinType> InsulinTypes { get; set; }
         public DbSet<Role> Roles { get; set; }

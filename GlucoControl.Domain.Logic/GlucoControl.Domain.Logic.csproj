@@ -93,7 +93,7 @@
       <Name>GlucoControl.Domain</Name>
     </ProjectReference>
     <ProjectReference Include="..\GlucoControl.Repository\GlucoControl.Repository.csproj">
-      <Project>{13F5559B-57A5-4438-B2F2-EC3568091217}</Project>
+      <Project>{F6F3EF54-CAB2-498D-BE33-84C138D9713C}</Project>
       <Name>GlucoControl.Repository</Name>
     </ProjectReference>
     <ProjectReference Include="..\GlucoControl.Transversal\GlucoControl.Transversal.csproj">
