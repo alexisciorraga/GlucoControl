@@ -44,6 +44,11 @@ namespace GlucoControl.Domain.Logic.Services
             return GetDomainEntityFromRepositoryEntity(repositoryEntity);
         }
 
+        public IEnumerable<Control> GetControlsByUserId(Guid userId)
+        {
+            return GetDomainEntitiesFromRepositoryEntities(_controlRepository.GetControlsByUserId(userId));
+        }
+
         public void Update(Control entity)
         {
             var repositoryEntity = GetRepositoryEntityFromDomainEntity(entity);

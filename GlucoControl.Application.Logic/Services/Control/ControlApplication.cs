@@ -35,6 +35,11 @@ namespace GlucoControl.Application.Logic.Services
             return _controlLogic.GetById(entityId);
         }
 
+        public IEnumerable<Control> GetControlsByUserId(Guid userId)
+        {
+            return _controlLogic.GetControlsByUserId(userId);
+        }
+
         public void Update(Control entity)
         {
             _controlLogic.Update(entity);
