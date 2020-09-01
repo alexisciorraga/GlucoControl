@@ -10,7 +10,7 @@ namespace GlucoControl.Domain.Logic.Services
 {
     public class UserLogic : BaseServiceLogic<User, Repository.Models.User>, IUserLogic
     {
-        IUserRepository _userRepository;
+        private IUserRepository _userRepository;
 
         public UserLogic(IMapper mapper, IUserRepository userRepository) : base(mapper)
         {

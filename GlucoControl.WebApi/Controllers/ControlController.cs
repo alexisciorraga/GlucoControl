@@ -6,8 +6,9 @@ namespace GlucoControl.WebApi.Controllers
 {
     public class ControlController : ApiController
     {
-        IControlApplication _controlApplication;
-        IMapper _mapper;
+        private IControlApplication _controlApplication;
+        private IMapper _mapper;
+
         public ControlController(IControlApplication controlApplication, IMapper mapper)
         {
             _controlApplication = controlApplication;

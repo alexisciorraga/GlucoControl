@@ -10,7 +10,7 @@ namespace GlucoControl.Domain.Logic.Services
 {
     public class RoleLogic : BaseServiceLogic<Role, Repository.Models.Role>, IRoleLogic
     {
-        IRoleRepository _roleRepository;
+        private IRoleRepository _roleRepository;
 
         public RoleLogic(IMapper mapper, IRoleRepository roleRepository) : base(mapper)
         {

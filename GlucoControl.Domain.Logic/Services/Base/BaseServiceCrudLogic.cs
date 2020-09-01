@@ -1,17 +1,17 @@
-﻿using System.Collections.Generic;
+﻿using AutoMapper;
 using GlucoControl.Domain.Services.Base;
-using AutoMapper;
 using GlucoControl.Repository.Interfaces;
+using System.Collections.Generic;
 
 namespace GlucoControl.Domain.Logic.Services.Base
 {
-    public class BaseServiceCrudLogic<TDomainEntity, TRepositoryEntity>:
+    public class BaseServiceCrudLogic<TDomainEntity, TRepositoryEntity> :
         BaseServiceLogic<TDomainEntity, TRepositoryEntity>
         , IBaseServiceCrudLogic<TDomainEntity, int>
         where TDomainEntity : class
         where TRepositoryEntity : class
     {
-        readonly IGenericRepository<TRepositoryEntity> _genericRepository;
+        private readonly IGenericRepository<TRepositoryEntity> _genericRepository;
 
         public BaseServiceCrudLogic(IMapper mapper,
             IGenericRepository<TRepositoryEntity> genericRepository)
@@ -49,7 +49,6 @@ namespace GlucoControl.Domain.Logic.Services.Base
 
         protected virtual void SpecificEntityAddOperations(TRepositoryEntity repositoryEntity, TDomainEntity domainEntity)
         {
-
         }
 
         public IEnumerable<TDomainEntity> GetAll()

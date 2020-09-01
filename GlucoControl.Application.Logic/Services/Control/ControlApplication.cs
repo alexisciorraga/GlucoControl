@@ -8,7 +8,7 @@ namespace GlucoControl.Application.Logic.Services
 {
     public class ControlApplication : IControlApplication
     {
-        readonly IControlLogic _controlLogic;
+        private readonly IControlLogic _controlLogic;
 
         public ControlApplication(IControlLogic controlLogic)
         {

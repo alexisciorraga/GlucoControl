@@ -1,6 +1,5 @@
 ﻿using GlucoControl.Repository.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.SqlServer.Infrastructure.Internal;
 using System.Configuration;
 
 namespace GlucoControl.Repository.Context
@@ -13,7 +12,7 @@ namespace GlucoControl.Repository.Context
         public DbSet<Role> Roles { get; set; }
         public DbSet<User> Users { get; set; }
 
-        readonly string connectionString;
+        private readonly string connectionString;
 
         //public GlucoControlDbContext(DbContextOptions<GlucoControlDbContext> options) : base(options)
         //{

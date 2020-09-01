@@ -6,7 +6,8 @@ namespace GlucoControl.Repository.Repositories
 {
     public class InsulinRepository : GenericRepository<Insulin>, IInsulinRepository
     {
-        readonly GlucoControlDbContext _dbContext;
+        private readonly GlucoControlDbContext _dbContext;
+
         public InsulinRepository(GlucoControlDbContext dbContext) : base(dbContext)
         {
             _dbContext = dbContext;

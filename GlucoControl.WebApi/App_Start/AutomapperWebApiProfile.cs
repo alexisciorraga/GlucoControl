@@ -20,7 +20,6 @@ namespace GlucoControl.WebApi
 
             CreateMap<Domain.Model.Data.User.User, Models.User>();
             CreateMap<Models.User, Domain.Model.Data.User.User>();
-
         }
     }
 }

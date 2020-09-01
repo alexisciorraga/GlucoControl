@@ -4,22 +4,23 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace GlucoControl.Repository.Repositories
 {
     public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class
     {
-        readonly GlucoControlDbContext _dbContext;
+        private readonly GlucoControlDbContext _dbContext;
         //readonly ILogErrorRepository _logErrorRepository;
 
         private DbSet<TEntity> table = null;
+
         public GenericRepository()
         {
             //_dbContext = new GlucoControlDbContext(new DbContextOptions<GlucoControlDbContext> { });
             _dbContext = new GlucoControlDbContext();
             table = _dbContext.Set<TEntity>();
         }
+
         public GenericRepository(GlucoControlDbContext dbContext/*, ILogErrorRepository logErrorRepository*/)
         {
             _dbContext = dbContext;
@@ -65,6 +66,7 @@ namespace GlucoControl.Repository.Repositories
                 throw ex;
             }
         }
+
         public TEntity Insert(TEntity obj)
         {
             try

@@ -6,7 +6,8 @@ namespace GlucoControl.Repository.Repositories
 {
     public class RoleRepository : GenericRepository<Role>, IRoleRepository
     {
-        readonly GlucoControlDbContext _dbContext;
+        private readonly GlucoControlDbContext _dbContext;
+
         public RoleRepository(GlucoControlDbContext dbContext) : base(dbContext)
         {
             _dbContext = dbContext;

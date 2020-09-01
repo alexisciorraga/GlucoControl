@@ -6,8 +6,8 @@ namespace GlucoControl.Application.Logic.Services.Base
 {
     public class BaseApplicationCrudLogic<TEntity, TEntityKey> : IBaseApplicationCrud<TEntity, TEntityKey>
     {
-        readonly IBaseServiceCrudLogic<TEntity, TEntityKey> _baseServiceCrudLogic;
-        readonly IBaseServiceReadLogic<TEntity, TEntityKey> _baseServiceReadLogic;
+        private readonly IBaseServiceCrudLogic<TEntity, TEntityKey> _baseServiceCrudLogic;
+        private readonly IBaseServiceReadLogic<TEntity, TEntityKey> _baseServiceReadLogic;
 
         public BaseApplicationCrudLogic(IBaseServiceCrudLogic<TEntity, TEntityKey> baseServiceCrudLogic, IBaseServiceReadLogic<TEntity, TEntityKey> baseServiceReadLogic)
         {

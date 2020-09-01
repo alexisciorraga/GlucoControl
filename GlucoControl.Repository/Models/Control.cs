@@ -9,6 +9,7 @@ namespace GlucoControl.Repository.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid ControlId { get; set; }
+
         public DateTime ControlDate { get; set; }
         public int GlucoseLevel { get; set; }
         public bool? ProvideInsulin { get; set; }
@@ -17,6 +18,7 @@ namespace GlucoControl.Repository.Models
         public Insulin Insulin { get; set; }
 
         public Guid UserId { get; set; }
+
         [ForeignKey("UserId")]
         public User User { get; set; }
     }

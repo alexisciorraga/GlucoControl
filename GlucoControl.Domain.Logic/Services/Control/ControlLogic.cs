@@ -10,8 +10,9 @@ namespace GlucoControl.Domain.Logic.Services
 {
     public class ControlLogic : BaseServiceLogic<Control, Repository.Models.Control>, IControlLogic
     {
-        IControlRepository _controlRepository;
-        IMapper _mapper;
+        private IControlRepository _controlRepository;
+        private IMapper _mapper;
+
         public ControlLogic(IMapper mapper, IControlRepository controlRepository) : base(mapper)
         {
             _controlRepository = controlRepository;

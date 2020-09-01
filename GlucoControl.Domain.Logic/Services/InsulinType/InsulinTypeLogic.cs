@@ -10,7 +10,7 @@ namespace GlucoControl.Domain.Logic.Services
 {
     public class InsulinTypeLogic : BaseServiceLogic<InsulinType, Repository.Models.InsulinType>, IInsulinTypeLogic
     {
-        IInsulinTypeRepository _insulinTypeRepository;
+        private IInsulinTypeRepository _insulinTypeRepository;
 
         public InsulinTypeLogic(IMapper mapper, IInsulinTypeRepository insulinTypeRepository) : base(mapper)
         {
