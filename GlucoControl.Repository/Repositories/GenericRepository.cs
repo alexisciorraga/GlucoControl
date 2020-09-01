@@ -16,7 +16,8 @@ namespace GlucoControl.Repository.Repositories
         private DbSet<TEntity> table = null;
         public GenericRepository()
         {
-            _dbContext = new GlucoControlDbContext(new DbContextOptions<GlucoControlDbContext> { });
+            //_dbContext = new GlucoControlDbContext(new DbContextOptions<GlucoControlDbContext> { });
+            _dbContext = new GlucoControlDbContext();
             table = _dbContext.Set<TEntity>();
         }
         public GenericRepository(GlucoControlDbContext dbContext/*, ILogErrorRepository logErrorRepository*/)
@@ -68,13 +69,19 @@ namespace GlucoControl.Repository.Repositories
         {
             try
             {
+                TEntity entityInserted = null;
+
                 if (table != null)
                 {
-                    return table.Add(obj).Entity;
+                    entityInserted = table.Add(obj).Entity;
+                    Save();
+                    return entityInserted;
                 }
                 else
                 {
-                    return _dbContext.Add(obj).Entity;
+                    entityInserted = _dbContext.Add(obj).Entity;
+                    Save();
+                    return entityInserted;
                 }
             }
             catch (Exception ex)
