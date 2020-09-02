@@ -138,9 +138,6 @@ namespace GlucoControl.Repository.Migrations
                     b.Property<Guid>("RoleId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("UserId1")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("Username")
                         .HasColumnType("nvarchar(max)");
 
@@ -150,8 +147,6 @@ namespace GlucoControl.Repository.Migrations
                     b.HasKey("UserId");
 
                     b.HasIndex("RoleId");
-
-                    b.HasIndex("UserId1");
 
                     b.ToTable("Users");
                 });
@@ -163,7 +158,7 @@ namespace GlucoControl.Repository.Migrations
                         .HasForeignKey("InsulinId");
 
                     b.HasOne("GlucoControl.Repository.Models.User", "User")
-                        .WithMany()
+                        .WithMany("Control")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -185,10 +180,6 @@ namespace GlucoControl.Repository.Migrations
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("GlucoControl.Repository.Models.User", null)
-                        .WithMany("Control")
-                        .HasForeignKey("UserId1");
                 });
 #pragma warning restore 612, 618
         }

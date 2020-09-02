@@ -27,5 +27,11 @@ namespace GlucoControl.Domain.Logic.Services
             var repositoryEntity = _userRepository.GetById(entityId);
             return GetDomainEntityFromRepositoryEntity(repositoryEntity);
         }
+
+        public User Login(string username, string password)
+        {
+            var repositoryEntity = _userRepository.Login(username, password);
+            return GetDomainEntityFromRepositoryEntity(repositoryEntity);
+        }
     }
 }

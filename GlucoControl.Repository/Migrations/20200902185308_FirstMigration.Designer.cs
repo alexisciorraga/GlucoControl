@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GlucoControl.Repository.Migrations
 {
     [DbContext(typeof(GlucoControlDbContext))]
-    [Migration("20200831191554_FirstMigration")]
+    [Migration("20200902185308_FirstMigration")]
     partial class FirstMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -20,6 +20,39 @@ namespace GlucoControl.Repository.Migrations
                 .HasAnnotation("ProductVersion", "3.1.7")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("GlucoControl.Repository.Models.Control", b =>
+                {
+                    b.Property<Guid>("ControlId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("ControlDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("GlucoseLevel")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("InsulinAmount")
+                        .HasColumnType("int");
+
+                    b.Property<Guid?>("InsulinId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool?>("ProvideInsulin")
+                        .HasColumnType("bit");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("ControlId");
+
+                    b.HasIndex("InsulinId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Controls");
+                });
 
             modelBuilder.Entity("GlucoControl.Repository.Models.Insulin", b =>
                 {
@@ -107,9 +140,6 @@ namespace GlucoControl.Repository.Migrations
                     b.Property<Guid>("RoleId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("UserId1")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("Username")
                         .HasColumnType("nvarchar(max)");
 
@@ -120,9 +150,20 @@ namespace GlucoControl.Repository.Migrations
 
                     b.HasIndex("RoleId");
 
-                    b.HasIndex("UserId1");
+                    b.ToTable("Users");
+                });
 
-                    b.ToTable("User");
+            modelBuilder.Entity("GlucoControl.Repository.Models.Control", b =>
+                {
+                    b.HasOne("GlucoControl.Repository.Models.Insulin", "Insulin")
+                        .WithMany()
+                        .HasForeignKey("InsulinId");
+
+                    b.HasOne("GlucoControl.Repository.Models.User", "User")
+                        .WithMany("Control")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("GlucoControl.Repository.Models.Insulin", b =>
@@ -141,10 +182,6 @@ namespace GlucoControl.Repository.Migrations
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("GlucoControl.Repository.Models.User", null)
-                        .WithMany("Control")
-                        .HasForeignKey("UserId1");
                 });
 #pragma warning restore 612, 618
         }

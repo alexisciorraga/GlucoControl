@@ -6,5 +6,6 @@ namespace GlucoControl.Domain.Services
 {
     public interface IUserLogic : IBaseServiceReadLogic<User, Guid>
     {
+        User Login(string username, string password);
     }
 }

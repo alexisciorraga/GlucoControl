@@ -25,6 +25,6 @@ namespace GlucoControl.Repository.Models
         public string Username { get; set; }
         public string Password { get; set; }
 
-        public virtual ICollection<User> Control { get; set; }
+        public virtual ICollection<Control> Control { get; set; }
     }
 }

@@ -53,5 +53,22 @@ namespace GlucoControl.WebApi.Controllers
 
             return _httpResponseMessage;
         }
+
+        [HttpGet]
+        [Route("Login")]
+        public HttpResponseMessage Login(string username, string password)
+        {
+            try
+            {
+                var allUsers = _userApplication.Login(username, password);
+                _httpResponseMessage = Request.CreateResponse(HttpStatusCode.OK, allUsers);
+            }
+            catch (Exception exception)
+            {
+                _httpResponseMessage = Request.CreateResponse(HttpStatusCode.InternalServerError, exception);
+            }
+
+            return _httpResponseMessage;
+        }
     }
 }

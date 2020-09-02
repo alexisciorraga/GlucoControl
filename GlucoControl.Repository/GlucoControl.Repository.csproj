@@ -299,13 +299,13 @@
     <Compile Include="Interfaces\IInsulinTypeRepository.cs" />
     <Compile Include="Interfaces\IRoleRepository.cs" />
     <Compile Include="Interfaces\IUserRepository.cs" />
-    <Compile Include="Migrations\20200831191554_FirstMigration.cs" />
-    <Compile Include="Migrations\20200831191554_FirstMigration.designer.cs">
-      <DependentUpon>20200831191554_FirstMigration.cs</DependentUpon>
+    <Compile Include="Migrations\20200902185308_FirstMigration.cs" />
+    <Compile Include="Migrations\20200902185308_FirstMigration.designer.cs">
+      <DependentUpon>20200902185308_FirstMigration.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\20200831191916_SecondMigration.cs" />
-    <Compile Include="Migrations\20200831191916_SecondMigration.designer.cs">
-      <DependentUpon>20200831191916_SecondMigration.cs</DependentUpon>
+    <Compile Include="Migrations\20200902185434_InsertFixedData.cs" />
+    <Compile Include="Migrations\20200902185434_InsertFixedData.designer.cs">
+      <DependentUpon>20200902185434_InsertFixedData.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\GlucoControlDbContextModelSnapshot.cs" />
     <Compile Include="Models\Control.cs" />

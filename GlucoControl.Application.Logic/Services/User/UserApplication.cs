@@ -24,5 +24,10 @@ namespace GlucoControl.Application.Logic.Services
         {
             return _userLogic.GetById(entityId);
         }
+
+        public User Login(string username, string password)
+        {
+            return _userLogic.Login(username, password);
+        }
     }
 }

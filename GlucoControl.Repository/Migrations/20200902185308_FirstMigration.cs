@@ -1,5 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
-using System;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace GlucoControl.Repository.Migrations
 {
@@ -36,12 +36,12 @@ namespace GlucoControl.Repository.Migrations
                 columns: table => new
                 {
                     InsulinId = table.Column<Guid>(nullable: false),
-                    InsulinTypeId = table.Column<Guid>(nullable: false),
                     Brand = table.Column<string>(nullable: true),
                     GenericName = table.Column<string>(nullable: true),
                     StartTime = table.Column<string>(nullable: true),
                     Peak = table.Column<string>(nullable: true),
-                    Duration = table.Column<string>(nullable: true)
+                    Duration = table.Column<string>(nullable: true),
+                    InsulinTypeId = table.Column<Guid>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -55,7 +55,7 @@ namespace GlucoControl.Repository.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "User",
+                name: "Users",
                 columns: table => new
                 {
                     UserId = table.Column<Guid>(nullable: false),
@@ -67,25 +67,57 @@ namespace GlucoControl.Repository.Migrations
                     Weight = table.Column<decimal>(nullable: false),
                     RoleId = table.Column<Guid>(nullable: false),
                     Username = table.Column<string>(nullable: true),
-                    Password = table.Column<string>(nullable: true),
-                    UserId1 = table.Column<Guid>(nullable: true)
+                    Password = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_User", x => x.UserId);
+                    table.PrimaryKey("PK_Users", x => x.UserId);
                     table.ForeignKey(
-                        name: "FK_User_Roles_RoleId",
+                        name: "FK_Users_Roles_RoleId",
                         column: x => x.RoleId,
                         principalTable: "Roles",
                         principalColumn: "RoleId",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_User_User_UserId1",
-                        column: x => x.UserId1,
-                        principalTable: "User",
-                        principalColumn: "UserId",
-                        onDelete: ReferentialAction.Restrict);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "Controls",
+                columns: table => new
+                {
+                    ControlId = table.Column<Guid>(nullable: false),
+                    ControlDate = table.Column<DateTime>(nullable: false),
+                    GlucoseLevel = table.Column<int>(nullable: false),
+                    ProvideInsulin = table.Column<bool>(nullable: true),
+                    InsulinId = table.Column<Guid>(nullable: true),
+                    InsulinAmount = table.Column<int>(nullable: true),
+                    UserId = table.Column<Guid>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Controls", x => x.ControlId);
+                    table.ForeignKey(
+                        name: "FK_Controls_Insulins_InsulinId",
+                        column: x => x.InsulinId,
+                        principalTable: "Insulins",
+                        principalColumn: "InsulinId",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Controls_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "UserId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Controls_InsulinId",
+                table: "Controls",
+                column: "InsulinId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Controls_UserId",
+                table: "Controls",
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Insulins_InsulinTypeId",
@@ -93,23 +125,21 @@ namespace GlucoControl.Repository.Migrations
                 column: "InsulinTypeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_User_RoleId",
-                table: "User",
+                name: "IX_Users_RoleId",
+                table: "Users",
                 column: "RoleId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_User_UserId1",
-                table: "User",
-                column: "UserId1");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "Controls");
+
+            migrationBuilder.DropTable(
                 name: "Insulins");
 
             migrationBuilder.DropTable(
-                name: "User");
+                name: "Users");
 
             migrationBuilder.DropTable(
                 name: "InsulinTypes");

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GlucoControl.Repository.Migrations
 {
     [DbContext(typeof(GlucoControlDbContext))]
-    [Migration("20200831191916_SecondMigration")]
-    partial class SecondMigration
+    [Migration("20200902185434_InsertFixedData")]
+    partial class InsertFixedData
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -140,9 +140,6 @@ namespace GlucoControl.Repository.Migrations
                     b.Property<Guid>("RoleId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("UserId1")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("Username")
                         .HasColumnType("nvarchar(max)");
 
@@ -152,8 +149,6 @@ namespace GlucoControl.Repository.Migrations
                     b.HasKey("UserId");
 
                     b.HasIndex("RoleId");
-
-                    b.HasIndex("UserId1");
 
                     b.ToTable("Users");
                 });
@@ -165,7 +160,7 @@ namespace GlucoControl.Repository.Migrations
                         .HasForeignKey("InsulinId");
 
                     b.HasOne("GlucoControl.Repository.Models.User", "User")
-                        .WithMany()
+                        .WithMany("Control")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -187,10 +182,6 @@ namespace GlucoControl.Repository.Migrations
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("GlucoControl.Repository.Models.User", null)
-                        .WithMany("Control")
-                        .HasForeignKey("UserId1");
                 });
 #pragma warning restore 612, 618
         }
