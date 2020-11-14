@@ -1,6 +1,5 @@
 ﻿using GlucoControl.Repository.Models;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 
 namespace GlucoControl.Repository.Interfaces

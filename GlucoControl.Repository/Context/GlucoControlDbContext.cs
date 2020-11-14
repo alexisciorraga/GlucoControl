@@ -1,6 +1,6 @@
 ﻿using GlucoControl.Repository.Models;
 using Microsoft.EntityFrameworkCore;
-using System.Configuration;
+using Pomelo.EntityFrameworkCore.MySql.Infrastructure.Internal;
 
 namespace GlucoControl.Repository.Context
 {
@@ -14,16 +14,17 @@ namespace GlucoControl.Repository.Context
 
         private readonly string connectionString;
 
-        //public GlucoControlDbContext(DbContextOptions<GlucoControlDbContext> options) : base(options)
-        //{
-        //    //connectionString = options.GetExtension<SqlServerOptionsExtension>().ConnectionString;
-        //    connectionString = "";
-        //}
+        public GlucoControlDbContext(DbContextOptions<GlucoControlDbContext> options) : base(options)
+        {
+            connectionString = options.GetExtension<MySqlOptionsExtension>().ConnectionString;
+        }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //optionsBuilder.UseSqlServer(connectionString);
-            optionsBuilder.UseSqlServer(ConfigurationManager.ConnectionStrings["GlucoControlDB"].ConnectionString);
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseMySql(connectionString, builder => builder.EnableRetryOnFailure());
+            }
         }
 
         protected override void OnModelCreating(ModelBuilder builder)
