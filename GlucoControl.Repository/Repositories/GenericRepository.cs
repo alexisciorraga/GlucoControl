@@ -17,7 +17,7 @@ namespace GlucoControl.Repository.Repositories
         public GenericRepository()
         {
             //_dbContext = new GlucoControlDbContext(new DbContextOptions<GlucoControlDbContext> { });
-            _dbContext = new GlucoControlDbContext();
+            // _dbContext = new GlucoControlDbContext();
             table = _dbContext.Set<TEntity>();
         }
 

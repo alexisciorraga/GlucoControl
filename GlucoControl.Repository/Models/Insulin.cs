@@ -17,6 +17,7 @@ namespace GlucoControl.Repository.Models
         public string Duration { get; set; }
 
         public Guid InsulinTypeId { get; set; }
+
         [ForeignKey("InsulinTypeId")]
         public InsulinType InsulinType { get; set; }
     }
