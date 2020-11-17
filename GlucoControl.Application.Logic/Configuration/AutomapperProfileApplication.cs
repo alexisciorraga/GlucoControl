@@ -8,7 +8,6 @@ namespace GlucoControl.Application.Logic.Configuration
     public class AutomapperProfileApplication : IAutomapperProfileApplication
     {
         private readonly List<IAutomapperProfileContainer> _profiles = new List<IAutomapperProfileContainer>();
-
         public AutomapperProfileApplication(IAutoMapperDomainContainer domainProfile)
         {
             _profiles.Add(domainProfile);

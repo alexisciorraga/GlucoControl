@@ -26,7 +26,7 @@ namespace GlucoControl.Domain.Logic.Services
             return GetDomainEntityFromRepositoryEntity(controlRepository);
         }
 
-        public void Delete(Guid entityId)
+        public void Delete(int entityId)
         {
             var controlToDelete = _controlRepository.GetById(entityId);
             _controlRepository.Delete(controlToDelete);
@@ -38,13 +38,13 @@ namespace GlucoControl.Domain.Logic.Services
             return GetDomainEntitiesFromRepositoryEntities(repositoryEntities);
         }
 
-        public Control GetById(Guid entityId)
+        public Control GetById(int entityId)
         {
             var repositoryEntity = _controlRepository.GetById(entityId);
             return GetDomainEntityFromRepositoryEntity(repositoryEntity);
         }
 
-        public IEnumerable<Control> GetControlsByUserId(Guid userId)
+        public IEnumerable<Control> GetControlsByUserId(int userId)
         {
             return GetDomainEntitiesFromRepositoryEntities(_controlRepository.GetControlsByUserId(userId));
         }

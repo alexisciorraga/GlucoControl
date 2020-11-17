@@ -16,7 +16,7 @@ namespace GlucoControl.Repository.Repositories
             _dbContext = dbContext;
         }
 
-        public IEnumerable<Control> GetControlsByUserId(Guid userId)
+        public IEnumerable<Control> GetControlsByUserId(int userId)
         {
             return _dbContext.Controls.Where(c => c.UserId == userId).ToList();
         }

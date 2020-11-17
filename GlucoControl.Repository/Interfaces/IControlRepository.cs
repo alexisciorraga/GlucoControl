@@ -6,6 +6,6 @@ namespace GlucoControl.Repository.Interfaces
 {
     public interface IControlRepository : IGenericRepository<Control>
     {
-        IEnumerable<Control> GetControlsByUserId(Guid userId);
+        IEnumerable<Control> GetControlsByUserId(int userId);
     }
 }

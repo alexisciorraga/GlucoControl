@@ -20,7 +20,7 @@ namespace GlucoControl.Application.Logic.Services
             return _controlLogic.Add(entity);
         }
 
-        public void Delete(Guid entityId)
+        public void Delete(int entityId)
         {
             _controlLogic.Delete(entityId);
         }
@@ -30,12 +30,12 @@ namespace GlucoControl.Application.Logic.Services
             return _controlLogic.GetAll();
         }
 
-        public Control GetById(Guid entityId)
+        public Control GetById(int entityId)
         {
             return _controlLogic.GetById(entityId);
         }
 
-        public IEnumerable<Control> GetControlsByUserId(Guid userId)
+        public IEnumerable<Control> GetControlsByUserId(int userId)
         {
             return _controlLogic.GetControlsByUserId(userId);
         }

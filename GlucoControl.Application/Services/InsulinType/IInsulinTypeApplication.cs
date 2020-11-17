@@ -4,7 +4,7 @@ using System;
 
 namespace GlucoControl.Application.Services
 {
-    public interface IInsulinTypeApplication : IBaseReadApplication<InsulinType, Guid>
+    public interface IInsulinTypeApplication : IBaseReadApplication<InsulinType, int>
     {
     }
 }

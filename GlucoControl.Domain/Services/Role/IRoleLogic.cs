@@ -4,7 +4,7 @@ using System;
 
 namespace GlucoControl.Domain.Services
 {
-    public interface IRoleLogic : IBaseServiceReadLogic<Role, Guid>
+    public interface IRoleLogic : IBaseServiceReadLogic<Role, int>
     {
     }
 }

@@ -4,7 +4,7 @@ using System;
 
 namespace GlucoControl.Domain.Services
 {
-    public interface IUserLogic : IBaseServiceReadLogic<User, Guid>
+    public interface IUserLogic : IBaseServiceReadLogic<User, int>
     {
         User Login(string username, string password);
     }

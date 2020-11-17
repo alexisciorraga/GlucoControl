@@ -9,7 +9,7 @@ namespace GlucoControl.Repository.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public Guid InsulinTypeId { get; set; }
+        public int InsulinTypeId { get; set; }
 
         public string Description { get; set; }
 

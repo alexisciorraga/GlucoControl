@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GlucoControl.Repository.Migrations
 {
     [DbContext(typeof(GlucoControlDbContext))]
-    [Migration("20201114174013_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20201116222837_FirstCreation")]
+    partial class FirstCreation
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,9 +21,9 @@ namespace GlucoControl.Repository.Migrations
 
             modelBuilder.Entity("GlucoControl.Repository.Models.Control", b =>
                 {
-                    b.Property<Guid>("ControlId")
+                    b.Property<int>("ControlId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)");
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("ControlDate")
                         .HasColumnType("datetime(6)");
@@ -34,14 +34,14 @@ namespace GlucoControl.Repository.Migrations
                     b.Property<int?>("InsulinAmount")
                         .HasColumnType("int");
 
-                    b.Property<Guid?>("InsulinId")
-                        .HasColumnType("char(36)");
+                    b.Property<int?>("InsulinId")
+                        .HasColumnType("int");
 
                     b.Property<bool?>("ProvideInsulin")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("char(36)");
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
 
                     b.HasKey("ControlId");
 
@@ -54,9 +54,9 @@ namespace GlucoControl.Repository.Migrations
 
             modelBuilder.Entity("GlucoControl.Repository.Models.Insulin", b =>
                 {
-                    b.Property<Guid>("InsulinId")
+                    b.Property<int>("InsulinId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)");
+                        .HasColumnType("int");
 
                     b.Property<string>("Brand")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -67,8 +67,8 @@ namespace GlucoControl.Repository.Migrations
                     b.Property<string>("GenericName")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<Guid>("InsulinTypeId")
-                        .HasColumnType("char(36)");
+                    b.Property<int>("InsulinTypeId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Peak")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -85,9 +85,9 @@ namespace GlucoControl.Repository.Migrations
 
             modelBuilder.Entity("GlucoControl.Repository.Models.InsulinType", b =>
                 {
-                    b.Property<Guid>("InsulinTypeId")
+                    b.Property<int>("InsulinTypeId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)");
+                        .HasColumnType("int");
 
                     b.Property<string>("Description")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -99,9 +99,9 @@ namespace GlucoControl.Repository.Migrations
 
             modelBuilder.Entity("GlucoControl.Repository.Models.Role", b =>
                 {
-                    b.Property<Guid>("RoleId")
+                    b.Property<int>("RoleId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)");
+                        .HasColumnType("int");
 
                     b.Property<string>("Description")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -113,9 +113,9 @@ namespace GlucoControl.Repository.Migrations
 
             modelBuilder.Entity("GlucoControl.Repository.Models.User", b =>
                 {
-                    b.Property<Guid>("UserId")
+                    b.Property<int>("UserId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)");
+                        .HasColumnType("int");
 
                     b.Property<int>("Age")
                         .HasColumnType("int");
@@ -135,8 +135,8 @@ namespace GlucoControl.Repository.Migrations
                     b.Property<string>("Password")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<Guid>("RoleId")
-                        .HasColumnType("char(36)");
+                    b.Property<int>("RoleId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Username")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");

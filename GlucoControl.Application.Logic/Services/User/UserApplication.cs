@@ -20,7 +20,7 @@ namespace GlucoControl.Application.Logic.Services
             return _userLogic.GetAll();
         }
 
-        public User GetById(Guid entityId)
+        public User GetById(int entityId)
         {
             return _userLogic.GetById(entityId);
         }

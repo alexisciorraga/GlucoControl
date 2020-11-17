@@ -4,7 +4,7 @@ using System;
 
 namespace GlucoControl.Domain.Services
 {
-    public interface IInsulinTypeLogic : IBaseServiceReadLogic<InsulinType, Guid>
+    public interface IInsulinTypeLogic : IBaseServiceReadLogic<InsulinType, int>
     {
     }
 }

@@ -5,8 +5,8 @@ using System.Collections.Generic;
 
 namespace GlucoControl.Application.Services
 {
-    public interface IControlApplication : IBaseReadApplication<Control, Guid>, IBaseApplicationCrud<Control, Guid>
+    public interface IControlApplication : IBaseReadApplication<Control, int>, IBaseApplicationCrud<Control, int>
     {
-        IEnumerable<Control> GetControlsByUserId(Guid userId);
+        IEnumerable<Control> GetControlsByUserId(int userId);
     }
 }

@@ -4,8 +4,8 @@ namespace GlucoControl.DotNetApi.Models
 {
     public class Insulin
     {
-        public Guid InsulinId { get; set; }
-        public Guid InsulinTypeId { get; set; }
+        public int InsulinId { get; set; }
+        public int InsulinTypeId { get; set; }
         public string Brand { get; set; }
         public string GenericName { get; set; }
         public string StartTime { get; set; }

@@ -9,7 +9,7 @@ namespace GlucoControl.Repository.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public Guid UserId { get; set; }
+        public int UserId { get; set; }
 
         public string Name { get; set; }
         public string Lastname1 { get; set; }
@@ -17,7 +17,7 @@ namespace GlucoControl.Repository.Models
         public int Age { get; set; }
         public int Height { get; set; }
         public decimal Weight { get; set; }
-        public Guid RoleId { get; set; }
+        public int RoleId { get; set; }
 
         [ForeignKey("RoleId")]
         public Role Role { get; set; }

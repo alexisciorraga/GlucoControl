@@ -15,6 +15,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using System;
+using Unity;
 
 namespace GlucoControl.DotNetApi
 {
@@ -59,7 +61,7 @@ namespace GlucoControl.DotNetApi
             services.AddScoped<IUserLogic, UserLogic>();
             services.AddScoped<IUserRepository, UserRepository>();
 
-            services.AddAutoMapper(typeof(Startup));
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             services.AddControllers()
                 .AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
@@ -90,5 +92,21 @@ namespace GlucoControl.DotNetApi
                 endpoints.MapControllers();
             });
         }
+
+        //private void RegisterAutoMapper(IUnityContainer container)
+        //{
+        //    container.RegisterType<IAutomapperProfileApplication, AutomapperProfileApplication>();
+
+        //    var automapperProfilesApplication = container.Resolve<IAutomapperProfileApplication>();
+
+        //    var mapperConfiguration = new MapperConfiguration(configuration =>
+        //    {
+        //        automapperProfilesApplication.GetProfiles()
+        //            .ForEach(profileContainer => configuration.AddProfile(profileContainer.GetProfile()));
+        //        configuration.AddProfile(new AutomapperPresentationProfile());
+        //    });
+
+        //    container.RegisterInstance<IMapper>(mapperConfiguration.CreateMapper());
+        //}
     }
 }

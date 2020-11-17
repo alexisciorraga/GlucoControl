@@ -22,7 +22,7 @@ namespace GlucoControl.Domain.Logic.Services
             return GetDomainEntitiesFromRepositoryEntities(_roleRepository.GetAll());
         }
 
-        public Role GetById(Guid entityId)
+        public Role GetById(int entityId)
         {
             var repositoryEntity = _roleRepository.GetById(entityId);
             return GetDomainEntityFromRepositoryEntity(repositoryEntity);

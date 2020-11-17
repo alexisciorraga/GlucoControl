@@ -1,9 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
-using System;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace GlucoControl.Repository.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class FirstCreation : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -11,7 +12,8 @@ namespace GlucoControl.Repository.Migrations
                 name: "InsulinTypes",
                 columns: table => new
                 {
-                    InsulinTypeId = table.Column<Guid>(nullable: false),
+                    InsulinTypeId = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Description = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -23,7 +25,8 @@ namespace GlucoControl.Repository.Migrations
                 name: "Roles",
                 columns: table => new
                 {
-                    RoleId = table.Column<Guid>(nullable: false),
+                    RoleId = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Description = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -35,13 +38,14 @@ namespace GlucoControl.Repository.Migrations
                 name: "Insulins",
                 columns: table => new
                 {
-                    InsulinId = table.Column<Guid>(nullable: false),
+                    InsulinId = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Brand = table.Column<string>(nullable: true),
                     GenericName = table.Column<string>(nullable: true),
                     StartTime = table.Column<string>(nullable: true),
                     Peak = table.Column<string>(nullable: true),
                     Duration = table.Column<string>(nullable: true),
-                    InsulinTypeId = table.Column<Guid>(nullable: false)
+                    InsulinTypeId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -58,14 +62,15 @@ namespace GlucoControl.Repository.Migrations
                 name: "Users",
                 columns: table => new
                 {
-                    UserId = table.Column<Guid>(nullable: false),
+                    UserId = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(nullable: true),
                     Lastname1 = table.Column<string>(nullable: true),
                     Lastname2 = table.Column<string>(nullable: true),
                     Age = table.Column<int>(nullable: false),
                     Height = table.Column<int>(nullable: false),
                     Weight = table.Column<decimal>(nullable: false),
-                    RoleId = table.Column<Guid>(nullable: false),
+                    RoleId = table.Column<int>(nullable: false),
                     Username = table.Column<string>(nullable: true),
                     Password = table.Column<string>(nullable: true)
                 },
@@ -84,13 +89,14 @@ namespace GlucoControl.Repository.Migrations
                 name: "Controls",
                 columns: table => new
                 {
-                    ControlId = table.Column<Guid>(nullable: false),
+                    ControlId = table.Column<int>(nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     ControlDate = table.Column<DateTime>(nullable: false),
                     GlucoseLevel = table.Column<int>(nullable: false),
                     ProvideInsulin = table.Column<bool>(nullable: true),
-                    InsulinId = table.Column<Guid>(nullable: true),
+                    InsulinId = table.Column<int>(nullable: true),
                     InsulinAmount = table.Column<int>(nullable: true),
-                    UserId = table.Column<Guid>(nullable: false)
+                    UserId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {

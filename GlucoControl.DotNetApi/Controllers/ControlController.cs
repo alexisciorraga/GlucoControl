@@ -37,7 +37,7 @@ namespace GlucoControl.DotNetApi.Controllers
 
         [HttpGet]
         [Route("GetControl")]
-        public ActionResult GetControl(Guid controlId)
+        public ActionResult GetControl(int controlId)
         {
             try
             {
@@ -67,7 +67,7 @@ namespace GlucoControl.DotNetApi.Controllers
 
         [HttpGet]
         [Route("GetControlsByUserId")]
-        public ActionResult GetControlsByUserId(Guid userId)
+        public ActionResult GetControlsByUserId(int userId)
         {
             try
             {

@@ -8,7 +8,7 @@ namespace GlucoControl.Repository.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public Guid InsulinId { get; set; }
+        public int InsulinId { get; set; }
 
         public string Brand { get; set; }
         public string GenericName { get; set; }
@@ -16,7 +16,7 @@ namespace GlucoControl.Repository.Models
         public string Peak { get; set; }
         public string Duration { get; set; }
 
-        public Guid InsulinTypeId { get; set; }
+        public int InsulinTypeId { get; set; }
 
         [ForeignKey("InsulinTypeId")]
         public InsulinType InsulinType { get; set; }

@@ -20,7 +20,7 @@ namespace GlucoControl.Application.Logic.Services
             return _roleLogic.GetAll();
         }
 
-        public Role GetById(Guid entityId)
+        public Role GetById(int entityId)
         {
             return _roleLogic.GetById(entityId);
         }

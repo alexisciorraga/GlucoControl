@@ -22,7 +22,7 @@ namespace GlucoControl.DotNetApi.Controllers
 
         [HttpGet]
         [Route("GetUser")]
-        public ActionResult GetUser(Guid userId)
+        public ActionResult GetUser(int userId)
         {
             try
             {

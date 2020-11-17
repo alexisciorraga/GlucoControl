@@ -3,14 +3,16 @@ using System;
 using GlucoControl.Repository.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GlucoControl.Repository.Migrations
 {
     [DbContext(typeof(GlucoControlDbContext))]
-    partial class GlucoControlDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201116222932_InsertFixedData")]
+    partial class InsertFixedData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

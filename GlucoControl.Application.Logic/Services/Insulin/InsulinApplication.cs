@@ -20,7 +20,7 @@ namespace GlucoControl.Application.Logic.Services
             return _insulinLogic.GetAll();
         }
 
-        public Insulin GetById(Guid entityId)
+        public Insulin GetById(int entityId)
         {
             return _insulinLogic.GetById(entityId);
         }
